@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Praktikum Web 7</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .row1, .row2 {
+            display: flex;
+            gap: 10px;
+        }
+        .row1-red {
+            background-color: red;
+            flex-grow: 1;
+            height: 75px;
+        }
+        .row1-yellow {
+            background-color: yellow;
+            flex-grow: 5;
+            height: 75px;
+        }
+
+        .row2-green {
+            background-color: green;
+            flex-grow: 1;
+            height: 450px;
+        }
+
+        .row2-blue {
+            background-color: aqua;
+            flex-grow: 3;
+            height: 450px;
+        }
+
+        .row2-gold {
+            background-color: gold;
+            flex-grow: 1;
+            height: 450px;
+        }
+
+        .row3 {
+            background-color: pink;
+            flex-grow: 1;
+            height: 75px;
+        }
+
+        body {
+            height: 100vh;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row1">
+            <div class="row1-red">Kotak merah</div>
+            <div class="row1-yellow">Kotak kuning</div>
+        </div>
+        <div class="row2">
+            <div class="row2-green">Kotak Hijau</div>
+            <div class="row2-blue">Kotak biru</div>
+            <div class="row2-gold">Kotak emas</div>
+        </div>
+        <div class="row3">Kotak pink</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .row2 ,
+    .row3{
+        display: flex;
+        gap: 10px ;
+    }
+
+    .row2-yellow,
+    .row3-yellow{
+        background-color: yellow;
+        height: 100px;
+        flex-grow: 1;
+    }
+
+    .row2-yellow{
+        background-color: yellow;
+        height: 100px;
+        flex-grow: 1;
+    }
+
+    .row2-orange{
+        background-color: orange;
+        height: 100px;
+        flex-grow: 3;
+    }
+
+    .row3-blue{
+        background-color: blue;
+        height: 100px;
+        flex-grow: 1;
+    }
+
+    
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="row2">
+        <div class="row2-yellow">kotak kuning</div>
+        <div class="row2-orange">kotak orange</div>
+    </div>
+    <div class="row3">
+        <div class="row3-yellow">kotak kuning</div>
+        <div class="row3-blue">kotak biru</div>
+    </div>
+</div>
+</body>
+</html>
