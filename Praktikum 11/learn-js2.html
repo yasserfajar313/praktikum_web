@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitung kurs Rupiah</title>
+</head>
+<body>
+    <h1>Hitung kurs Rupiah</h1>
+    <label for="">Masukan Uang Dollar :</label>
+    <input type="number" name="Dollar" id="Dollar" onchange="hitungDollar()" />
+
+    <p>Nilai dalam Rupiah : <span id="Rupiah"></span></p>
+
+    <script>
+        function hitungDollar() {
+            let jumlahdollar = document.getElementById("dollar").value;
+            let jumlahrupiah = 14650 * jumlahdollar;
+            document.getElementById("rupiah").innerText = "Rp" + jumlahrupiah;
+        }
+    </script>
+</body>
+</html>
