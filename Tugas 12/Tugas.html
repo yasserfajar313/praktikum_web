@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validasi</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <label for="namaPelanggan">Nama Pelanggan:</label>
+        <input type="text" id="namaPelanggan" name="namaPelanggan" required maxlength="30">
+        <span id="errorNamaPelanggan" class="error"></span><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <span id="errorEmail" class="error"></span><br>
+
+        <label for="jamKeberangkatan">Jam Keberangkatan:</label>
+        <input type="text" id="jamKeberangkatan" name="jamKeberangkatan" required pattern="^(?:[01]\d|2[0123]):(?:[012345]\d)$">
+        <span id="errorJamKeberangkatan" class="error"></span><br>
+
+        <label for="tujuanKeberangkatan">Tujuan Keberangkatan:</label>
+        <input type="text" id="tujuanKeberangkatan" name="tujuanKeberangkatan" required>
+        <span id="errorTujuanKeberangkatan" class="error"></span><br>
+
+        <label for="jumlahTiket">Jumlah Tiket:</label>
+        <input type="number" id="jumlahTiket" name="jumlahTiket" required min="1" max="10">
+        <span id="errorJumlahTiket" class="error"></span><br>
+
+        <button type="button" onclick="validateForm()">Submit</button>
+    </form>
+
+    <div id="result" style="display:none;">
+        <h2>Data Form:</h2>
+        <p id="resultNamaPelanggan"></p>
+        <p id="resultEmail"></p>
+        <p id="resultJamKeberangkatan"></p>
+        <p id="resultTujuanKeberangkatan"></p>
+        <p id="resultJumlahTiket"></p>
+    </div>
+
+    <script>
+        function validateForm() {
+            // Reset error messages
+            resetErrors();
+
+            // Get form data
+            var namaPelanggan = document.getElementById('namaPelanggan').value;
+            var email = document.getElementById('email').value;
+            var jamKeberangkatan = document.getElementById('jamKeberangkatan').value;
+            var tujuanKeberangkatan = document.getElementById('tujuanKeberangkatan').value;
+            var jumlahTiket = document.getElementById('jumlahTiket').value;
+
+            // Validation
+            var isValid = true;
+
+            if (namaPelanggan.length > 30) {
+                document.getElementById('errorNamaPelanggan').innerText = 'Nama pelanggan maksimum 30 karakter.';
+                isValid = false;
+            }
+
+            if (!validateEmail(email)) {
+                document.getElementById('errorEmail').innerText = 'Format email tidak valid.';
+                isValid = false;
+            }
+
+            if (!validateJamKeberangkatan(jamKeberangkatan)) {
+                document.getElementById('errorJamKeberangkatan').innerText = 'Format jam tidak valid (00:00 - 23:59).';
+                isValid = false;
+            }
+
+            if (tujuanKeberangkatan.trim() === '') {
+                document.getElementById('errorTujuanKeberangkatan').innerText = 'Tujuan keberangkatan harus diisi.';
+                isValid = false;
+            }
+
+            if (jumlahTiket < 1 || jumlahTiket > 10 || isNaN(jumlahTiket)) {
+                document.getElementById('errorJumlahTiket').innerText = 'Jumlah tiket harus bilangan bulat antara 1-10.';
+                isValid = false;
+            }
+
+            // Display result or errors
+            if (isValid) {
+                displayResult(namaPelanggan, email, jamKeberangkatan, tujuanKeberangkatan, jumlahTiket);
+            }
+        }
+
+        function resetErrors() {
+            var errorElements = document.querySelectorAll('.error');
+            errorElements.forEach(function (element) {
+                element.innerText = '';
+            });
+        }
+
+        function validateEmail(email) {
+            // Basic email validation
+            var emailRegex = /\S+@\S+\.\S+/;
+            return emailRegex.test(email);
+        }
+
+        function validateJamKeberangkatan(jam) {
+            // Basic time validation (HH:mm format)
+            var timeRegex = /^(?:[01]\d|2[0123]):(?:[012345]\d)$/;
+            return timeRegex.test(jam);
+        }
+
+        function displayResult(namaPelanggan, email, jamKeberangkatan, tujuanKeberangkatan, jumlahTiket) {
+            // Display result
+            document.getElementById('resultNamaPelanggan').innerText = 'Nama Pelanggan: ' + namaPelanggan;
+            document.getElementById('resultEmail').innerText = 'Email: ' + email;
+            document.getElementById('resultJamKeberangkatan').innerText = 'Jam Keberangkatan: ' + jamKeberangkatan;
+            document.getElementById('resultTujuanKeberangkatan').innerText = 'Tujuan Keberangkatan: ' + tujuanKeberangkatan;
+            document.getElementById('resultJumlahTiket').innerText = 'Jumlah Tiket: ' + jumlahTiket;
+
+            // Show result section
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
